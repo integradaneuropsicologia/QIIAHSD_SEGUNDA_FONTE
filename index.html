@@ -139,6 +139,17 @@
     border-color:var(--pri);
     color:#fff;
   }
+  label.opt:has(input[type="checkbox"]:checked){
+  background:var(--pri);
+  border-color:var(--pri);
+  color:#fff;
+}
+label.opt:has(input[type="checkbox"]:checked) span{
+  color:#fff;
+  font-weight:600;
+}
+
+  
   label.opt:has(input[type="radio"]:checked) span{
     color:#fff;
     font-weight:600;
@@ -189,18 +200,16 @@
 
 </head>
 <body>
+
 <div class="wrap">
-  <div class="header">
-  <h1>Questionário para Identificação de Indicadores de Altas Habilidade e Superdotação - Adulto - Segunda Fonte</h1>
+  <div class="card">
+    <div class="header"> <h1>Questionário para Identificação de Indicadores de Altas Habilidade e Superdotação - Adulto - Segunda Fonte</h1>
   <button id="themeToggle" type="button" class="btn btn-toggle">
     Modo escuro
-  </button>
-</div>
+  </button> </div>
 
-    
-    <!-- Dados do paciente (por token) -->
-    <div id="pacInfo" class="grid-info" style="display:none;"></div>
 
+   <div id="pacInfo" class="grid-info" style="display:none;"></div>
     <form id="form" style="margin-top:14px; display:none;">
       <div id="qs"></div>
 
@@ -211,12 +220,13 @@
         <div id="progress" class="muted"></div>
       </div>
       <div id="msg" class="msg" style="display:none"></div>
-    </form>
 
+    </form>
     <div id="alert" class="msg" style="display:none"></div>
   </div>
 </div>
 
+    
 <script>
 // ======== CONFIG ========
 // ======== TEMA CLARO/ESCURO ========
@@ -285,6 +295,9 @@ const FREQ5   = ["Nunca","Raramente","Às vezes","Frequentemente","Quase sempre"
 const SEVER4  = ["Não","Leve","Moderada","Grave"];
 const YESNO   = ["Sim","Não"];
 const YNP     = ["Sim","Não","Não sei"];
+const AREAS_TAGS= ["Matemática", "Estatística", "Física", "Química", "Biologia", "Astronomia e exploração espacial", "Tecnologia e inovação", "Programação e desenvolvimento de software", "Inteligência artificial e automação", "Ciência de dados", "Engenharia e sistemas", "Leitura em geral", "Literatura (romances, contos, poesia)", "Escrita criativa", "Escrita técnica ou científica", "Filosofia", "Argumentação, lógica e debates", "Aprendizagem de novos idiomas", "Linguística e linguagem", "Artes visuais (desenho, pintura, ilustração)", "Design gráfico ou digital", "Fotografia", "Música (ouvir, tocar ou compor)", "Produção musical", "Cinema e análise de filmes", "Teatro e performance", "Jogos de estratégia", "Xadrez", "Jogos de lógica e quebra-cabeças", "Jogos digitais complexos", "RPG e criação de narrativas", "Arquitetura", "Design de produtos", "Modelagem 3D", "Construção e montagem de objetos", "Mecânica e funcionamento de sistemas", "Criação de projetos ou invenções", "História", "Geopolítica", "Economia", "Política", "Sociologia", "Psicologia", "Comportamento humano", "Questões sociais contemporâneas", "Ética e moral", "Natureza e meio ambiente", "Ecologia e sustentabilidade", "Animais", "Ciências naturais", "Atividades físicas e esportes", "Artes marciais", "Performance corporal", "Consciência corporal e movimento", "Análise de padrões, números ou sistemas", "Criação e organização de listas, mapas ou classificações", "Pesquisa profunda sobre temas específicos", "Interesses altamente específicos ou intensos", "Universos fictícios complexos (séries, livros, jogos)", "Colecionar informações ou dados", "Empreendedorismo", "Planejamento estratégico", "Inovação em negócios", "Gestão e liderança"
+];
+const MELHORES_TAGS= ["Matemática", "Raciocínio lógico", "Resolução de problemas complexos", "Pensamento analítico", "Estatística e análise de dados", "Programação", "Tecnologia da informação", "Engenharia e sistemas", "Ciências exatas em geral", "Leitura e interpretação de textos", "Escrita", "Produção de textos técnicos ou científicos", "Argumentação e debate", "Aprendizagem rápida de conteúdos", "Aprendizagem autodidata", "Compreensão verbal", "Aquisição de novos idiomas", "Comunicação oral", "Didática e ensino", "Criatividade", "Geração de ideias originais", "Pensamento inovador", "Design e criação visual", "Artes visuais", "Música", "Composição musical", "Análise estética", "Planejamento estratégico", "Visão sistêmica", "Organização de processos", "Tomada de decisão", "Liderança", "Gestão de pessoas", "Empreendedorismo", "Negociação", "Psicologia e comportamento humano", "Leitura social e interpessoal", "Empatia cognitiva", "Análise de cenários sociais", "Memorização", "Aprendizagem de longo prazo", "Velocidade de raciocínio", "Atenção a detalhes", "Identificação de padrões", "Pensamento abstrato", "Jogos de estratégia", "Xadrez", "Jogos de lógica", "Esportes", "Coordenação motora", "Performance física", "Outros (descreva)"]
 
 
 
@@ -791,7 +804,7 @@ $("#form").addEventListener("submit", async (e)=>{
       token: qs("token"),
       cpf: patient.cpf,
       code: CODE,
-      source: "paciente",
+      source: "segunda_fonte",
       submitted_at: new Date().toISOString(),
       total: answeredCount,
       categoria,
