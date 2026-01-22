@@ -191,7 +191,7 @@
 <body>
 <div class="wrap">
   <div class="header">
-  <h1>Questionário para Identificação de Indicadores de Altas Habilidade e Superdotação - Segunda fonte</h1>
+  <h1>Questionário para Identificação de Indicadores de Altas Habilidade e Superdotação - Adulto - Segunda Fonte</h1>
   <button id="themeToggle" type="button" class="btn btn-toggle">
     Modo escuro
   </button>
@@ -287,114 +287,153 @@ const YESNO   = ["Sim","Não"];
 const YNP     = ["Sim","Não","Não sei"];
 
 
+
 const QUESTIONS = [
 
-{id:"hdr0", type:"section", text:"Impressões gerais"},
-  {id:"1", type:"tri", text:"Tem habilidade(s) especial(is) / se destaca?"},
-  {id:"2", type:"tri", text:"Demonstra ser diferente das demais pessoas?"},
-  {id:"3", type:"tri", text:"Apresenta atitudes diferentes das demais pessoas?"},
-  {id:"4", type:"likert", text:"É tímido(a)? (descritor, não pontua)", required:false, score:false},
-  {id:"5", type:"likert", text:"É extrovertido(a)? (descritor, não pontua)", required:false, score:false},
+  // ===============================
+  // IMPRESSÕES GERAIS
+  // ===============================
 
-  {id:"hdr1", type:"section", text:"Leitura e interesses"},
-  {id:"6A", type:"likert", text:"Lê por interesse próprio?"},
-  {id:"6B", type:"hours", text:"Horas/semana de leitura por interesse."},
-  {id:"7", type:"checkbox", text:"Assuntos/atividades preferidos (marque ≥3 se possível).", checkboxes:AREAS_TAGS},
-  {id:"8", type:"single", text:"Idade dos 4 melhores amigos (predominante).", options:[
-    {label:"Maioria da mesma idade", value:1},
-    {label:"Mistura (alguns ±2 anos)", value:2},
-    {label:"Maioria +3 a +6 anos (mais velhos)", value:3},
-    {label:"Maioria >6 anos mais velhos", value:4},
-    {label:"Maioria mais novos", value:2}
-  ]},
-  {id:"9", type:"checkbox", text:"Áreas em que é/era um dos melhores (até 4).", checkboxes:MELHORES_TAGS},
+  { type:"radio", text:"Tem habilidades especiais ou se destaca em alguma área?", options: YESNO },
+  { type:"radio", text:"Demonstra ser diferente das demais pessoas?", options: YESNO },
+  { type:"radio", text:"Apresenta atitudes diferentes das demais pessoas?", options: YESNO },
+  { type:"radio", text:"É tímido(a)?", options: FREQ5 },
+  { type:"radio", text:"É extrovertido(a)?", options: FREQ5 },
 
-  {id:"hdr2", type:"section", text:"Traços socioemocionais e hábitos"},
-  {id:"10", type:"likert", text:"Sente-se deslocado/diferente no pensar/sentir/agir?"},
-  {id:"11", type:"likert", text:"Prefere trabalhar/estudar/treinar sozinho(a)?"},
-  {id:"12", type:"likert", text:"Na infância, preferia livros difíceis/enciclopédias/atlas?"},
-  {id:"13", type:"likert", text:"Independente para pensar e agir?"},
-  {id:"14", type:"likert", text:"Senso de humor “diferente”?"},
-  {id:"15", type:"likert", text:"Preocupação ética/moral/social/ambiental?"},
-  {id:"16", type:"likert", text:"Perfeccionista?"},
-  {id:"17", type:"likert", text:"Mais observador(a) que os demais?"},
-  {id:"18", type:"likert", text:"Gosta de xadrez/estratégia?"},
-  {id:"19", type:"likert", text:"Princípios éticos/morais próprios aplicados sempre?"},
-  {id:"20", type:"likert", text:"Conceito de amizade diferente?"},
-  {id:"21", type:"likert", text:"Intolerante com atitudes que julga inadequadas?"},
-  {id:"22", type:"single", text:"Na infância, preferia amigos…", options:[
-    {label:"Mais velhos", value:4},{label:"Tanto faz", value:2},
-    {label:"Mesma idade", value:1},{label:"Mais novos", value:2}
+  // ===============================
+  // LEITURA E INTERESSES
+  // ===============================
+
+  { type:"radio", text:"Lê por interesse próprio?", options: FREQ5 },
+  { type:"input", text:"Horas por semana de leitura por interesse próprio." },
+
+  { type:"checkbox", text:"Assuntos ou atividades preferidos (marque 3 ou mais se possível).",
+    options: AREAS_TAGS },
+
+  { type:"radio", text:"Idade predominante dos 4 melhores amigos.", options:[
+    "Maioria da mesma idade",
+    "Mistura de idades",
+    "Maioria mais velhos (+3 a +6 anos)",
+    "Maioria muito mais velhos",
+    "Maioria mais novos"
   ]},
 
-  {id:"hdr3", type:"section", text:"Habilidade acima da média (H)"},
-  {id:"23", type:"likert", text:"Memória muito destacada nos temas de interesse."},
-  {id:"24", type:"likert", text:"Muitas informações acumuladas nos temas de interesse."},
-  {id:"25", type:"likert", text:"Vocabulário mais avançado/rico nos temas de interesse."},
-  {id:"26", type:"likert", text:"Entende coisas complexas “por partes”."},
-  {id:"27", type:"likert", text:"Aprende rápido o que interessa e transfere para outras áreas."},
-  {id:"28", type:"likert", text:"Percebe rapidamente relações parte–todo."},
-  {id:"29", type:"likert", text:"Extrai mais de um sentido de histórias/filmes etc."},
-  {id:"30", type:"likert", text:"Faz perguntas inteligentes (como/por quê)."},
-  {id:"31", type:"likert", text:"Notas eram melhores que as da turma."},
-  {id:"32", type:"likert", text:"Aprende mais rápido que os demais (no que interessa)."},
-  {id:"33", type:"likert", text:"Adapta-se a novidades ou as modifica."},
-  {id:"34", type:"likert", text:"Pensamento abstrato muito desenvolvido."},
+  { type:"checkbox", text:"Áreas em que é ou era um dos melhores (até 4).",
+    options: MELHORES_TAGS },
 
-  {id:"hdr4", type:"section", text:"Criatividade (C)"},
-  {id:"35", type:"likert", text:"Ideias vistas como diferentes/esquisitas pelos demais."},
-  {id:"36", type:"likert", text:"Muito curioso(a)."},
-  {id:"37", type:"likert", text:"Muitas ideias/soluções/respostas incomuns e inteligentes."},
-  {id:"38", type:"likert", text:"Gosta de arriscar para conseguir o que quer."},
-  {id:"39", type:"likert", text:"Gosta de enfrentar desafios."},
-  {id:"40", type:"likert", text:"Muito imaginativo(a)/inventivo(a)."},
-  {id:"41", type:"likert", text:"Sensível às coisas bonitas."},
-  {id:"42", type:"likert", text:"Inconformista e não se importa em ser diferente."},
-  {id:"43", type:"likert", text:"Compreende ideias diferentes das suas."},
-  {id:"44", type:"likert", text:"Fica chateado ao repetir algo que já sabe."},
-  {id:"45", type:"likert", text:"Descobre novos caminhos para resolver problemas."},
-  {id:"46", type:"likert", text:"Critica construtivamente e questiona autoritarismo."},
+  // ===============================
+  // TRAÇOS SOCIOEMOCIONAIS
+  // ===============================
 
-  {id:"hdr5", type:"section", text:"Itens invertidos (atenção, organização, regras)"},
-  {id:"47", type:"likert", text:"Presta atenção mesmo que o assunto não interesse.", invert:true},
-  {id:"48", type:"likert", text:"Cadernos completos e organizados.", invert:true},
-  {id:"49", type:"likert", text:"Gosta de cumprir regras.", invert:true},
+  { type:"radio", text:"Sente-se deslocado ou diferente no pensar, sentir ou agir?", options: FREQ5 },
+  { type:"radio", text:"Prefere trabalhar, estudar ou treinar sozinho(a)?", options: FREQ5 },
+  { type:"radio", text:"Na infância, preferia livros difíceis, enciclopédias ou atlas?", options: FREQ5 },
+  { type:"radio", text:"É independente para pensar e agir?", options: FREQ5 },
+  { type:"radio", text:"Possui senso de humor considerado diferente?", options: FREQ5 },
+  { type:"radio", text:"Demonstra preocupação ética, moral, social ou ambiental?", options: FREQ5 },
+  { type:"radio", text:"É perfeccionista?", options: YNP },
+  { type:"radio", text:"É mais observador(a) que os demais?", options: FREQ5 },
+  { type:"radio", text:"Gosta de xadrez ou jogos de estratégia?", options: FREQ5 },
+  { type:"radio", text:"Aplica princípios éticos ou morais próprios com frequência?", options: FREQ5 },
+  { type:"radio", text:"Possui um conceito de amizade diferente?", options: FREQ5 },
+  { type:"radio", text:"É intolerante com atitudes que considera inadequadas?", options: FREQ5 },
 
-  {id:"hdr6", type:"section", text:"Comprometimento com a tarefa (T)"},
-  {id:"50", type:"likert", text:"Dedica muito mais tempo/energia ao que gosta."},
-  {id:"51", type:"likert", text:"Muito exigente e autocrítico, nunca satisfeito."},
-  {id:"52", type:"likert", text:"Insiste em buscar soluções."},
-  {id:"53", type:"likert", text:"Tem sua própria organização."},
-  {id:"54", type:"likert", text:"Muito seguro e às vezes teimoso nas convicções."},
-  {id:"55", type:"likert", text:"Precisa de muito estímulo para terminar o que gosta.", invert:true},
-  {id:"56", type:"likert", text:"Deixa outras coisas para mergulhar no que interessa."},
-  {id:"57", type:"likert", text:"Reconhece obstáculos quando planeja."},
-  {id:"58", type:"likert", text:"Sabe estabelecer prioridades com facilidade."},
-  {id:"59", type:"likert", text:"Define etapas/detalhes/métodos para uma atividade."},
-  {id:"60", type:"likert", text:"Persistente no que interessa (conclui tarefas)."},
-  {id:"61", type:"likert", text:"Interessado e eficiente na organização de tarefas."},
+  { type:"radio", text:"Na infância, preferia amigos…", options:[
+    "Mais velhos",
+    "Tanto faz",
+    "Mesma idade",
+    "Mais novos"
+  ]},
 
-  {id:"hdr7", type:"section", text:"Liderança / Socioemocional (L)"},
-  {id:"62", type:"likert", text:"Distingue consequências e efeitos das ações."},
-  {id:"63", type:"likert", text:"Autossuficiente."},
-  {id:"64", type:"likert", text:"Escolhido/preferido para liderança."},
-  {id:"65", type:"likert", text:"Cooperativo com os demais."},
-  {id:"66", type:"likert", text:"Tende a organizar o grupo."},
-  {id:"67", type:"likert", text:"Persuasivo e sabe convencer."},
+  // ===============================
+  // HABILIDADE ACIMA DA MÉDIA (H)
+  // ===============================
 
-  {id:"hdr8", type:"section", text:"Artes / Esportes (A) — destaques"},
-  {id:"68", type:"tri", text:"Artes visuais — destaque?"},
-  {id:"69", type:"tri", text:"Música/Canto — destaque?"},
-  {id:"70", type:"tri", text:"Dança — destaque?"},
-  {id:"71", type:"tri", text:"Informática/Tecnologia — destaque?"},
-  {id:"72", type:"tri", text:"Esportes/Artes marciais/Ginástica — destaque?"},
-  {id:"73", type:"tri", text:"Teatro — destaque?"},
-  {id:"74", type:"tri", text:"Outra atividade — destaque?"},
-  {id:"74txt", type:"text", text:"Se marcou 'Outra atividade', qual? (opcional)"},
-  {id:"75", type:"tri", text:"Já obteve premiação/distinção nessas atividades?"},
-  {id:"76", type:"hours", text:"Horas/semana dedicadas às atividades artísticas/esportivas."}
+  { type:"radio", text:"Memória muito destacada nos temas de interesse.", options: FREQ5 },
+  { type:"radio", text:"Acumula muitas informações nos temas de interesse.", options: FREQ5 },
+  { type:"radio", text:"Vocabulário mais avançado nos temas de interesse.", options: FREQ5 },
+  { type:"radio", text:"Entende conteúdos complexos por partes.", options: FREQ5 },
+  { type:"radio", text:"Aprende rápido o que interessa e transfere para outras áreas.", options: FREQ5 },
+  { type:"radio", text:"Percebe rapidamente relações entre partes e o todo.", options: FREQ5 },
+  { type:"radio", text:"Extrai mais de um sentido de histórias ou filmes.", options: FREQ5 },
+  { type:"radio", text:"Faz perguntas inteligentes do tipo como ou por quê.", options: FREQ5 },
+  { type:"radio", text:"Apresentava notas melhores que a maioria da turma.", options: FREQ5 },
+  { type:"radio", text:"Aprende mais rápido que os demais no que interessa.", options: FREQ5 },
+  { type:"radio", text:"Adapta-se a novidades ou as modifica.", options: FREQ5 },
+  { type:"radio", text:"Possui pensamento abstrato muito desenvolvido.", options: FREQ5 },
+
+  // ===============================
+  // CRIATIVIDADE (C)
+  // ===============================
+
+  { type:"radio", text:"Suas ideias são vistas como diferentes ou esquisitas.", options: FREQ5 },
+  { type:"radio", text:"É muito curioso(a).", options: FREQ5 },
+  { type:"radio", text:"Apresenta ideias ou soluções incomuns e inteligentes.", options: FREQ5 },
+  { type:"radio", text:"Gosta de arriscar para conseguir o que deseja.", options: FREQ5 },
+  { type:"radio", text:"Gosta de enfrentar desafios.", options: FREQ5 },
+  { type:"radio", text:"É muito imaginativo(a) ou inventivo(a).", options: FREQ5 },
+  { type:"radio", text:"É sensível às coisas bonitas.", options: FREQ5 },
+  { type:"radio", text:"É inconformista e não se importa em ser diferente.", options: FREQ5 },
+  { type:"radio", text:"Compreende ideias diferentes das suas.", options: FREQ5 },
+  { type:"radio", text:"Fica chateado(a) ao repetir algo que já sabe.", options: FREQ5 },
+  { type:"radio", text:"Descobre novos caminhos para resolver problemas.", options: FREQ5 },
+  { type:"radio", text:"Critica construtivamente e questiona autoritarismo.", options: FREQ5 },
+
+  // ===============================
+  // ATENÇÃO / ORGANIZAÇÃO (itens inversos)
+  // ===============================
+
+  { type:"radio", text:"Presta atenção mesmo quando o assunto não interessa.", options: FREQ5 },
+  { type:"radio", text:"Mantém cadernos completos e organizados.", options: FREQ5 },
+  { type:"radio", text:"Gosta de cumprir regras.", options: FREQ5 },
+
+  // ===============================
+  // COMPROMETIMENTO COM A TAREFA (T)
+  // ===============================
+
+  { type:"radio", text:"Dedica muito mais tempo e energia ao que gosta.", options: FREQ5 },
+  { type:"radio", text:"É muito exigente e autocrítico.", options: FREQ5 },
+  { type:"radio", text:"Insiste em buscar soluções.", options: FREQ5 },
+  { type:"radio", text:"Possui sua própria forma de organização.", options: FREQ5 },
+  { type:"radio", text:"É muito seguro e às vezes teimoso nas convicções.", options: FREQ5 },
+  { type:"radio", text:"Precisa de muito estímulo para terminar o que gosta.", options: FREQ5 },
+  { type:"radio", text:"Deixa outras coisas para mergulhar no que interessa.", options: FREQ5 },
+  { type:"radio", text:"Reconhece obstáculos quando planeja.", options: FREQ5 },
+  { type:"radio", text:"Sabe estabelecer prioridades com facilidade.", options: FREQ5 },
+  { type:"radio", text:"Define etapas e métodos para realizar atividades.", options: FREQ5 },
+  { type:"radio", text:"É persistente no que interessa e conclui tarefas.", options: FREQ5 },
+  { type:"radio", text:"É interessado e eficiente na organização de tarefas.", options: FREQ5 },
+
+  // ===============================
+  // LIDERANÇA
+  // ===============================
+
+  { type:"radio", text:"Distingue consequências e efeitos das ações.", options: FREQ5 },
+  { type:"radio", text:"É autossuficiente.", options: FREQ5 },
+  { type:"radio", text:"É escolhido ou preferido para liderança.", options: FREQ5 },
+  { type:"radio", text:"É cooperativo com os demais.", options: FREQ5 },
+  { type:"radio", text:"Tende a organizar o grupo.", options: FREQ5 },
+  { type:"radio", text:"É persuasivo e sabe convencer.", options: FREQ5 },
+
+  // ===============================
+  // ARTES / ESPORTES
+  // ===============================
+
+  { type:"radio", text:"Artes visuais — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Música ou canto — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Dança — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Tecnologia ou informática — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Esportes ou artes marciais — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Teatro — apresenta destaque?", options:["Sim","Não","Parcial"] },
+  { type:"radio", text:"Outra atividade — apresenta destaque?", options:["Sim","Não","Parcial"] },
+
+  { type:"input", text:"Se marcou outra atividade, qual?" },
+
+  { type:"radio", text:"Já obteve premiação ou distinção nessas atividades?", options: YESNO },
+  { type:"input", text:"Horas por semana dedicadas às atividades artísticas ou esportivas." }
 
 ];
+
 
 const N = QUESTIONS.length;
 
